@@ -1,2 +1,3 @@
 # miked.codes
-Website for https://miked.codes
+
+My personal website, <https://miked.codes>
