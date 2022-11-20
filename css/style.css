@@ -1,0 +1,254 @@
+:root {
+  --catawba: hsla(340, 27%, 36%, 1);
+  --marigold: hsla(40, 90%, 51%, 1);
+  --deep-champagne: hsla(35, 73%, 78%, 1);
+  --xanadu: hsla(83, 9%, 48%, 1);
+  --pink-lavender: hsla(293, 71%, 86%, 1);
+
+  --body-background: var(--catawba);
+  --text-highlight: var(--deep-champagne);
+  --text-body-color: #fff;
+  --text-faded-color: rgba(255, 255, 255, 0.6);
+  --text-ultra-faded-color: rgba(255, 255, 255, 0.3);
+  --text-body-link-color: var(--pink-lavender);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 120%;
+  padding: 1.0rem;
+  margin: 0;
+
+  background: var(--body-background);
+  color: var(--text-body-color);
+}
+
+a {
+  color: var(--text-body-link-color);
+}
+
+nav {
+  display: grid;
+
+  grid-auto-flow: column;
+  grid-auto-columns: 20%;
+
+  width: 100%;
+}
+
+nav a {
+  text-decoration: none;
+  text-align: left;
+
+  font-size: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+nav a::after {
+  content: '';
+
+  width: 2.5rem;
+  height: 0.25rem;
+  margin-top: 1.5rem;
+
+  border-radius: 0.25rem;
+
+  background: transparent;
+  opacity: 0.6;
+}
+
+nav a:hover::after {
+  background: var(--text-highlight);
+}
+
+nav a.current::after {
+  background: var(--text-body-link-color);
+}
+
+/* nav a.current {
+  background-color: rgba(0, 0, 0, 0.03);
+} */
+
+#main-header, #main-section {
+  padding: 3.5rem 3.5rem 1rem 3.5rem;
+}
+
+#main-header {
+  display: flex;
+  vertical-align: middle;
+}
+
+#main-section {
+  max-width: 85%;
+}
+
+header#hero {
+  font-size: 4.0rem;
+}
+
+header#hero strong {
+  font-weight: 600;
+}
+
+.inline-portrait {
+  background: url('/images/me2.jpeg');
+  background-size: 6.0rem 6.0rem;
+  width: 6.0rem;
+  height: 6.0rem;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.highlight {
+  color: var(--text-highlight);
+}
+
+.faded {
+  color: var(--text-faded-color);
+}
+
+.ultra-faded {
+  color: var(--text-ultra-faded-color);
+}
+
+footer {
+  margin-top: 2.0rem;
+}
+
+/* Blog posts */
+
+header h1, header h2 {
+  margin: 2.0rem 0 0 0;
+  padding: 0;
+}
+
+h1 a, h2 a, h3 a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+article h1 {
+  font-size: 3.0rem;
+}
+
+article p, article ul, article ol {
+  line-height: 1.9rem;
+}
+
+.readable-width {
+  max-width: 60rem;
+}
+
+.meta ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.meta {
+  font-size: 0.95rem;
+  margin: 0 0 1.0rem 0;
+  color: var(--text-faded-color);
+}
+
+figure {
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+}
+
+figure figcaption {
+  font-size: 0.90rem;
+}
+
+figure.feature {
+  margin: 0;
+  padding: 0;
+
+  width: 100vw;
+
+  position: absolute;
+  left: 0;
+}
+
+figure.feature div, div.feature-spacer {
+  height: 400px;
+}
+
+figure.feature div {
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+
+  background-size: cover;
+  background-position: bottom center;
+}
+
+figure.wide {
+  margin: 0 -2.0rem;
+}
+
+.gallery-row {
+  display: flex;
+}
+
+/* Responsive */
+
+@media only screen and (max-width : 480px) {
+  header#hero {
+    font-size: 1.5rem;
+  }
+
+  .inline-portrait {
+    background-size: 1.75rem 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  nav {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+  }
+
+  nav a {
+    font-size: 1.0rem;
+    flex-direction: row;
+  }
+
+  nav a::after {
+    opacity: 0.0;
+  }  
+
+  #main-section, #main-header {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  figure.wide {
+    margin: 0;
+  }
+
+  figure.feature div, div.feature-spacer {
+    height: 200px;
+  }
+
+  .gallery-row {
+    display: block;
+  }
+
+  .link-blog ul {
+    display: block;
+  }
+
+  .link-blog li {
+    min-width: none;
+    max-width: none;
+  }
+}
