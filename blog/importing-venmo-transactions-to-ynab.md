@@ -53,13 +53,13 @@ Below I'll outline the process that I go through to get my Venmo transactions in
 
 [Log into Venmo](https://venmo.com/account/sign-in), then go to your statements page:
 
-{% image "/images/1-export-statement.png" %}
+{% image "/images/blog/venmo/1-export-statement.png" %}
     Find Your Statements in the Venmo Sidebar
 {% endimage %}
 
 Change the dropdown at the top of the page to "Past 60 days" or whatever timeframe you'd like. The page will update and you'll see the table of transactions further down reflect this time period.
 
-{% image "/images/1-go-to-statements.png" %}
+{% image "/images/blog/venmo/1-go-to-statements.png" %}
     Export Your Statement from Venmo
 {% endimage %}
 
@@ -89,13 +89,13 @@ If successful, you won't see any output. You can always open up the `to_ynab.csv
 
 In [YNAB](https://app.youneedabudget.com), locate your Venmo account and click the "File Import" button and click it. Locate your `to_ynab.csv` file and upload it (Hint: you can also drag and drop the CSV file into YNAB when your Venmo account is selected!)
 
-{% image "/images/2-import-into-ynab.png" %}
+{% image "/images/blog/venmo/2-import-into-ynab.png" %}
     Import Your Venmo Transactions into YNAB
 {% endimage %}
 
 You'll be able to preview what's being imported in the next window. It's always worth glancing over it and making sure that Payees and Memos line up. You don't need to change any of the options in the dialog, just click "Import" when you're ready!
 
-{% image "/images/2-preview-import.png" %}
+{% image "/images/blog/venmo/2-preview-import.png" %}
     Preview Your Imported Venmo Transactions
 {% endimage %}
 

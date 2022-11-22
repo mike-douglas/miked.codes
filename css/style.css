@@ -27,13 +27,13 @@ a {
   color: var(--text-body-link-color);
 }
 
-nav {
+nav#site {
   display: grid;
   grid-auto-flow: column;
   width: 50%;
 }
 
-nav a {
+nav#site a {
   text-decoration: none;
   text-align: left;
 
@@ -44,7 +44,7 @@ nav a {
   align-items: left;
 }
 
-nav a::after {
+nav#site a::after {
   content: '';
 
   width: 1.0rem;
@@ -57,12 +57,33 @@ nav a::after {
   opacity: 0.6;
 }
 
-nav a:hover::after {
+nav#site a:hover::after {
   background: var(--text-highlight);
 }
 
-nav a.current::after {
+nav#site a.current::after {
   background: var(--text-body-link-color);
+}
+
+nav#social {
+  display: flex;
+  
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+
+  width: 50%
+}
+
+nav#social a img {
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+
+nav#social a.mastodon img {
+  width: 28px;
+  height: 28px;
 }
 
 #main-header, #main-section {
@@ -253,17 +274,17 @@ figure.wide {
     height: 1.75rem;
   }
 
-  nav {
+  nav#site {
     grid-auto-flow: row;
     grid-auto-columns: auto;
   }
 
-  nav a {
+  nav#site a {
     font-size: 1.0rem;
     flex-direction: row;
   }
 
-  nav a::after {
+  nav#site a::after {
     opacity: 0.0;
   }  
 

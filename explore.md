@@ -8,7 +8,7 @@ date: 2022-01-02
 <header id="hero">
   <p>
     <strong class="faded">
-      This is where I share interesting links and things I'm reading at the moment.
+      This is my link feed.
     </strong>
   </p>
 </header>

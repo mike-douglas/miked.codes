@@ -1,7 +1,7 @@
 ---
 title: Keeping plants happy with sensors and automation
 excerpt: How I set up an array of Arduinos with moisture sensors to monitor plant health and send alerts when they need watering.
-feature: /images/plant_sensors_vis.gif
+feature: /images/blog/plant-sensors/plant_sensors_vis.gif
 layout: post.njk
 date: 2022-05-24
 tags:
@@ -23,7 +23,7 @@ Home automation has always been a hobby of mine. I have an existing home network
 
 This is the diagram of what the finished product looks like:
 
-{% wideimage "/images/Diagram-for-Plant-Sensors-1.png" %}
+{% wideimage "/images/blog/plant-sensors/Diagram-for-Plant-Sensors-1.png" %}
   Sensor, exporter, and monitoring platform setup
 {% endwideimage %}
 
@@ -57,10 +57,10 @@ Capacitive sensors report the energy stored in the soil around the plates of the
 The next step was wiring up the sensors to an Arduino. I went through a few iterations of this, first starting with an Arduino Uno and an Ethernet Shield, and finally ending up with a much cleaner setup using an [Adafruit ATWINC1500 WiFi](https://www.adafruit.com/product/2999) module. Connecting the WiFi module gave me an excuse to fire up my soldering iron, which hadn't gotten any use for many years!
 
 {% gallery %}
-  {% galleryimage "/images/IMG_1230-Medium.jpeg" %}
+  {% galleryimage "/images/blog/plant-sensors/IMG_1230-Medium.jpeg" %}
     Final wired Arduino with three sensors and a Wifi module
   {% endgalleryimage %}
-  {% galleryimage "/images/IMG_1229-Medium.jpeg" %}
+  {% galleryimage "/images/blog/plant-sensors/IMG_1229-Medium.jpeg" %}
     Moisture sensor placed inside of a plant
   {% endgalleryimage %}
 {% endgallery %}
@@ -227,7 +227,7 @@ Now for the fun part: making pretty charts and graphs, and alerting when moistur
 
 I set up a dashboard in [Grafana](https://grafana.com) with a chart for each sensor (8 currently), showing me the moisture level over 2 days. It looks something like this:
 
-{% wideimage "/images/sensor_dashboard.png" %}
+{% wideimage "/images/blog/plant-sensors/sensor_dashboard.png" %}
   A 2-day view of soil dryness for 4 of my monitored plants.
 {% endwideimage %}
 
@@ -245,7 +245,7 @@ The final piece is alerting. Remember the goal from the beginning of this post? 
 
 I set up an alert for each sensor, so I now have these:
 
-{% image "/images/alerts.png" %}
+{% image "/images/blog/plant-sensors/alerts.png" %}
   My 8 "Water Me" alerts
 {% endimage %}
 
@@ -253,13 +253,13 @@ I would like notifications sent to my mobile devices using Push notifications, a
 
 Grafana has Telegram support built-in as a [contact point](https://grafana.com/docs/grafana/latest/alerting/unified-alerting/contact-points/), so once I configured that with the right set of keys I was all set. Here's an example of a fired alert and a resolved alert from my Plant Alerts Bot:
 
-{% image "/images/telegram_alerts.png" %}
+{% image "/images/blog/plant-sensors/telegram_alerts.png" %}
   Telegram alerts sent from Grafana when a plant needs watering.
 {% endimage %}
 
 For extra points, I recently bought a [Tidbyt](https://tidbyt.com) which is a really cool desktop-sized programmable LED screen. In a few hours I was able to push some code to it that queried Grafana for the status of the alerts to produce a cute little pixel-based visualization. When there is an alert that firing, the leaves of one the plants turns brown. It's the same visualization that's at the top of this post:
 
-{% wideimage "/images/tidbyt.gif" %}
+{% wideimage "/images/blog/plant-sensors/tidbyt.gif" %}
   Look at all those happy plants.
 {% endwideimage %}
 
