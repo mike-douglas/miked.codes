@@ -23,14 +23,18 @@
 </head>
 <body>
   <header id="main-header">
-    <nav role="navigation"><a  href="/">
+    <nav id="site" role="navigation"><a  href="/">
         Home
       </a><a  href="/explore/">
         Explore
       </a><a  href="/blog/">
         Writing
       </a></nav>
-    <nav class="social">
+    <nav id="social">
+      <a target="_blank" class="mastodon" href="https://tech.lgbt/@miked" alt="Mastodon"><img src="/images/social/mastodon.svg"></a>
+      <a target="_blank" class="twitter" href="https://twitter.com/miked" alt="Twitter"><img src="/images/social/icons8-twitter.svg"></a>
+      <a target="_blank" class="github" href="https://github.com/mike-douglas" alt="Github"><img src="/images/social/icons8-github.svg"></a>
+      <a target="_blank" class="instagram" href="https://instragram.com/thisismiked" alt="Instagram"><img src="/images/social/icons8-instagram.svg"></a>
     </nav>
   </header>
   <section id="main-section">
@@ -76,13 +80,13 @@ Options:
 <p>Below I'll outline the process that I go through to get my Venmo transactions into YNAB, starting with exporting my Venmo statement from the last month to a file, then running that exported file through the script, and finally importing the <code>.csv</code> file into YNAB.</p>
 <h3>Step One: Download your Venmo statement</h3>
 <p><a href="https://venmo.com/account/sign-in">Log into Venmo</a>, then go to your statements page:</p>
-<figure class=""><img src="/images/1-export-statement.png" alt="
+<figure class=""><img src="/images/blog/venmo/1-export-statement.png" alt="
     Find Your Statements in the Venmo Sidebar
 "><figcaption>
     Find Your Statements in the Venmo Sidebar
 </figcaption></figure>
 <p>Change the dropdown at the top of the page to &quot;Past 60 days&quot; or whatever timeframe you'd like. The page will update and you'll see the table of transactions further down reflect this time period.</p>
-<figure class=""><img src="/images/1-go-to-statements.png" alt="
+<figure class=""><img src="/images/blog/venmo/1-go-to-statements.png" alt="
     Export Your Statement from Venmo
 "><figcaption>
     Export Your Statement from Venmo
@@ -101,13 +105,13 @@ venmo_statement.csv
 <p>If successful, you won't see any output. You can always open up the <code>to_ynab.csv</code> file to make sure everything looks good. On to the final step!</p>
 <h3>Step Three: Importing transactions into YNAB</h3>
 <p>In <a href="https://app.youneedabudget.com">YNAB</a>, locate your Venmo account and click the &quot;File Import&quot; button and click it. Locate your <code>to_ynab.csv</code> file and upload it (Hint: you can also drag and drop the CSV file into YNAB when your Venmo account is selected!)</p>
-<figure class=""><img src="/images/2-import-into-ynab.png" alt="
+<figure class=""><img src="/images/blog/venmo/2-import-into-ynab.png" alt="
     Import Your Venmo Transactions into YNAB
 "><figcaption>
     Import Your Venmo Transactions into YNAB
 </figcaption></figure>
 <p>You'll be able to preview what's being imported in the next window. It's always worth glancing over it and making sure that Payees and Memos line up. You don't need to change any of the options in the dialog, just click &quot;Import&quot; when you're ready!</p>
-<figure class=""><img src="/images/2-preview-import.png" alt="
+<figure class=""><img src="/images/blog/venmo/2-preview-import.png" alt="
     Preview Your Imported Venmo Transactions
 "><figcaption>
     Preview Your Imported Venmo Transactions

@@ -23,14 +23,18 @@
 </head>
 <body>
   <header id="main-header">
-    <nav role="navigation"><a  href="/">
+    <nav id="site" role="navigation"><a  href="/">
         Home
       </a><a  href="/explore/">
         Explore
       </a><a  href="/blog/">
         Writing
       </a></nav>
-    <nav class="social">
+    <nav id="social">
+      <a target="_blank" class="mastodon" href="https://tech.lgbt/@miked" alt="Mastodon"><img src="/images/social/mastodon.svg"></a>
+      <a target="_blank" class="twitter" href="https://twitter.com/miked" alt="Twitter"><img src="/images/social/icons8-twitter.svg"></a>
+      <a target="_blank" class="github" href="https://github.com/mike-douglas" alt="Github"><img src="/images/social/icons8-github.svg"></a>
+      <a target="_blank" class="instagram" href="https://instragram.com/thisismiked" alt="Instagram"><img src="/images/social/icons8-instagram.svg"></a>
     </nav>
   </header>
   <section id="main-section">
@@ -50,7 +54,7 @@
   <section>
     
     <figure class="feature">
-      <div style="background-image: url('/images/plant_sensors_vis.gif');"></div>
+      <div style="background-image: url('/images/blog/plant-sensors/plant_sensors_vis.gif');"></div>
       <figcaption></figcaption>
     </figure>
     <div class="feature-spacer"></div>
@@ -62,7 +66,7 @@
 <h2>The big picture</h2>
 <p>Home automation has always been a hobby of mine. I have an existing home network with wired and wireless connections throughout my home, as well as a server that functions as both a NAS and environment to run internal services and side projects that come and go. I could host a monitoring platform and a sensor data gathering service easily using this existing infrastructure, and with a few Arduinos with some sensors I could get readings on the moisture level of the plants where the moisture sensors are placed.</p>
 <p>This is the diagram of what the finished product looks like:</p>
-<figure class="wide"><img src="/images/Diagram-for-Plant-Sensors-1.png" alt="
+<figure class="wide"><img src="/images/blog/plant-sensors/Diagram-for-Plant-Sensors-1.png" alt="
   Sensor, exporter, and monitoring platform setup
 "><figcaption>
   Sensor, exporter, and monitoring platform setup
@@ -92,12 +96,12 @@ A<strong>capacitive moisture sensor works by measuring the changes in capacitanc
 <h3>Wiring up the sensors</h3>
 <p>The next step was wiring up the sensors to an Arduino. I went through a few iterations of this, first starting with an Arduino Uno and an Ethernet Shield, and finally ending up with a much cleaner setup using an <a href="https://www.adafruit.com/product/2999">Adafruit ATWINC1500 WiFi</a> module. Connecting the WiFi module gave me an excuse to fire up my soldering iron, which hadn't gotten any use for many years!</p>
 <div class="gallery"><div class="gallery-row">
-  <figure class="gallery-image"><img src="/images/IMG_1230-Medium.jpeg" alt="
+  <figure class="gallery-image"><img src="/images/blog/plant-sensors/IMG_1230-Medium.jpeg" alt="
     Final wired Arduino with three sensors and a Wifi module
   "><figcaption>
     Final wired Arduino with three sensors and a Wifi module
   </figcaption></figure>
-  <figure class="gallery-image"><img src="/images/IMG_1229-Medium.jpeg" alt="
+  <figure class="gallery-image"><img src="/images/blog/plant-sensors/IMG_1229-Medium.jpeg" alt="
     Moisture sensor placed inside of a plant
   "><figcaption>
     Moisture sensor placed inside of a plant
@@ -236,7 +240,7 @@ soil_moisture{sensor=&quot;01&quot;,reader=&quot;arduino1&quot;} 220
 <p>Now for the fun part: making pretty charts and graphs, and alerting when moisture levels are low!</p>
 <h3>Charts and dashboards</h3>
 <p>I set up a dashboard in <a href="https://grafana.com">Grafana</a> with a chart for each sensor (8 currently), showing me the moisture level over 2 days. It looks something like this:</p>
-<figure class="wide"><img src="/images/sensor_dashboard.png" alt="
+<figure class="wide"><img src="/images/blog/plant-sensors/sensor_dashboard.png" alt="
   A 2-day view of soil dryness for 4 of my monitored plants.
 "><figcaption>
   A 2-day view of soil dryness for 4 of my monitored plants.
@@ -248,20 +252,20 @@ soil_moisture{sensor=&quot;01&quot;,reader=&quot;arduino1&quot;} 220
 <h3>Alerting</h3>
 <p>The final piece is alerting. Remember the goal from the beginning of this post? <strong>I want my plants to alert me when they needed watering!</strong> Thankfully Grafana makes this super easy.</p>
 <p>I set up an alert for each sensor, so I now have these:</p>
-<figure class=""><img src="/images/alerts.png" alt="
+<figure class=""><img src="/images/blog/plant-sensors/alerts.png" alt="
   My 8 "Water Me" alerts
 "><figcaption>
   My 8 "Water Me" alerts
 </figcaption></figure>
 <p>I would like notifications sent to my mobile devices using Push notifications, and after looking around a bit I found that Telegram has a pretty awesome <a href="https://core.telegram.org/bots">Bot API Tutorial</a>. Telegram sends Push notifications to devices already so this was my free way to receive notifications straight to my devices when a plant needed watering.</p>
 <p>Grafana has Telegram support built-in as a <a href="https://grafana.com/docs/grafana/latest/alerting/unified-alerting/contact-points/">contact point</a>, so once I configured that with the right set of keys I was all set. Here's an example of a fired alert and a resolved alert from my Plant Alerts Bot:</p>
-<figure class=""><img src="/images/telegram_alerts.png" alt="
+<figure class=""><img src="/images/blog/plant-sensors/telegram_alerts.png" alt="
   Telegram alerts sent from Grafana when a plant needs watering.
 "><figcaption>
   Telegram alerts sent from Grafana when a plant needs watering.
 </figcaption></figure>
 <p>For extra points, I recently bought a <a href="https://tidbyt.com">Tidbyt</a> which is a really cool desktop-sized programmable LED screen. In a few hours I was able to push some code to it that queried Grafana for the status of the alerts to produce a cute little pixel-based visualization. When there is an alert that firing, the leaves of one the plants turns brown. It's the same visualization that's at the top of this post:</p>
-<figure class="wide"><img src="/images/tidbyt.gif" alt="
+<figure class="wide"><img src="/images/blog/plant-sensors/tidbyt.gif" alt="
   Look at all those happy plants.
 "><figcaption>
   Look at all those happy plants.
