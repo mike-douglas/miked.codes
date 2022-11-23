@@ -15,7 +15,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 120%;
+  font-size: 115%;
   padding: 1.0rem;
   margin: 0;
 
@@ -27,9 +27,15 @@ a {
   color: var(--text-body-link-color);
 }
 
+header nav {
+  display: flex;
+  align-items: center;
+}
+
 nav#site {
-  display: grid;
-  grid-auto-flow: column;
+  justify-content: flex-start;
+  gap: 3.0rem;
+
   width: 50%;
 }
 
@@ -66,10 +72,7 @@ nav#site a.current::after {
 }
 
 nav#social {
-  display: flex;
-  
   justify-content: flex-end;
-  align-items: center;
   gap: 0.5rem;
 
   width: 50%
@@ -177,7 +180,7 @@ footer {
 }
 
 .link-blog h2 {
-  color: var(--pink-lavender);
+  color: var(--text-highlight);
 }
 
 /* Blog posts */
@@ -194,7 +197,6 @@ h1 a, h2 a, h3 a {
 
 article h1 {
   font-size: 3.0rem;
-  color: 
 }
 
 article p, article ul, article ol {
@@ -275,8 +277,9 @@ figure.wide {
   }
 
   nav#site {
-    grid-auto-flow: row;
-    grid-auto-columns: auto;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.0rem;
   }
 
   nav#site a {
