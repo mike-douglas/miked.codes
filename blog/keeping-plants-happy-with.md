@@ -40,7 +40,7 @@ I don't have a lot of experience with Arduinos wiring up sensors, so I decided t
 
 I had one [Arduino Uno](https://www.arduino.cc/en/main/arduinoBoardUno) from when I was first attempting to get into electronics programming many years ago. I did basic tutorials like making LEDs blink and powering a tiny servo, but that's about the extent of it. Interacting with sensors turned out to be really straightforward, especially with the ones I bought. I purchased these [diymore Capacitive Soil Moisture Sensor](https://www.diymore.cc/products/2pcs-capacitive-soil-moisture-sensor-v1-2-analog-corrosion-resistant-dc-3-3-5-5v)s for the project. They're pretty affordable between $11-15 USD, so not a huge financial commitment if the project is a bust or I need to replace a component.
 
-{% image "/images/capacitive_soil_sensor.jpeg" %}
+{% image "/images/blog/plant-sensors/capacitive_soil_sensor.jpeg" %}
   diymore Capacitive Soil Moisture Sensor
 {% endimage %}
 
