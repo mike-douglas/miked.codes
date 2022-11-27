@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <style>
+      pre[class*=language-] {
+          font-size: 0.75rem;
+      }
+  </style>
+
+  <title>miked.codes - Delayed animations in a ForEach in SwiftUI</title>
+</head>
+<body>
+  <header id="main-header">
+    <nav id="site" role="navigation"><a  href="/">
+        Home
+      </a><a  href="/explore/">
+        Explore
+      </a><a  href="/blog/">
+        Writing
+      </a></nav>
+    <nav id="social">
+      <a target="_blank" class="mastodon" href="https://masto.ai/@miked" rel="me" alt="Mastodon"><img src="/images/social/mastodon.svg"></a>
+      <a target="_blank" class="twitter" href="https://twitter.com/miked" alt="Twitter"><img src="/images/social/icons8-twitter.svg"></a>
+      <a target="_blank" class="github" href="https://github.com/mike-douglas" alt="Github"><img src="/images/social/icons8-github.svg"></a>
+      <a target="_blank" class="instagram" href="https://instagram.com/thisismiked" alt="Instagram"><img src="/images/social/icons8-instagram.svg"></a>
+    </nav>
+  </header>
+  <section id="main-section">
+    <article class="readable-width">
+  <header>
+    <h1>Delayed animations in a ForEach in SwiftUI</h1>
+  </header>
+
+  <section class="meta">
+    <ul>
+      <li>
+        <time>Sat Nov 26 2022</time>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    
+
+    <p>I've been working on a side project and am adding animations to my views to give them more life. A common issue I have is that I need to animation of an array of items on to the screen, typically from a <code>@Binding</code>, such that each item starts its animation in sequence rather than in parallel after a short delay. In the end, I want to accomplish an effect like this:</p>
+<figure class=""><img src="/images/blog/delayed-animations/animation.gif" alt="
+  Delayed animation of views onAppear in a View
+"><figcaption>
+  Delayed animation of views onAppear in a View
+</figcaption></figure>
+<p>Below is a simple extension to accomplish this and a sample View implementing the above animation. Feed free to use it!</p>
+<h2>Extension for <code>Animation</code></h2>
+<p>The extension is:</p>
+<pre><code class="language-swift">import Foundation
+import SwiftUI
+
+extension Animation {
+    func delayWithIndexOf&lt;T: Equatable&gt;(_ item: T, in container: [T], factor: Double) -&gt; Animation {
+        self.delay(Double(container.firstIndex(of: item) ?? 0) * factor)
+    }
+}
+</code></pre>
+<p>This extension adds a new method to <code>Animation</code> similar to <code>delay(duration:)</code>, but takes two new arguments: the item in the loop, and the container for that item. It also takes a factor, usually the same value as <code>duration</code>, and returns a new <code>delay</code> animation. It's worth noting that if the item is <em>not</em> in the second argument, it always returns 0 to be safe. The item also needs to conform to the <a href="https://developer.apple.com/documentation/swift/equatable"><code>Equatable</code> protocol</a> to support array lookups.</p>
+<p>The result is that you can use this new method in place of <code>delay</code> inside of a loop when you want to delay an animation by a factor of the index of the item in the array. It's a declarative way to perform animations and transitions for items in lists, loading animations, and lots of other uses.</p>
+<h2>How to use <code>delayWithIndexOf</code></h2>
+<p>The following is an example that starts an animation when the view shows, animating in each of the subviews on a delay of 0.2 seconds after the previous one:</p>
+<pre><code class="language-swift">import SwiftUI
+
+struct ExampleView: View {
+    @State private var scaleFactor = 0.0
+    @State private var words = [&quot;Foo&quot;, &quot;Bar&quot;, &quot;Baz&quot;]
+    
+    var body: some View {
+        HStack {
+            ForEach(words, id: \.self) { word in
+                Text(word)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(.pink)
+                    .clipShape(RoundedRectangle(cornerRadius: 10.0))
+                    .scaleEffect(scaleFactor)
+                    .animation(
+                        .spring()
+                            .delayWithIndexOf(
+                                word,
+                                in: words,
+                                factor: 0.2
+                            ),
+                        value: scaleFactor
+                    )
+            }
+        }
+        .onAppear {
+            withAnimation(.spring()) {
+                scaleFactor = 1.0
+            }
+        }
+    }
+}
+
+struct ExampleView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExampleView()
+    }
+}
+</code></pre>
+<p>As you can see the new method fits right in with the declarative approach for defining animation behaviors and allows you to accomplish that staggered animation for items in a <code>ForEach</code> in a View.</p>
+<p>Enjoy!</p>
+
+
+  </section>
+</article>
+  </section>
+  <footer>
+    <center>
+      ✨
+    </center>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js" integrity="sha512-RDQSW3KoqJMiX0L/UBgwBmH1EmRYp8LBOiLaA8rBHIy+7OGP/7Gxg8vbt8wG4ZYd29P0Fnoq6+LOytCqx3cyoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/scripts/app.js"></script>
+</body>
+</html>
