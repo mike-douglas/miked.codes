@@ -54,13 +54,13 @@
   <section>
     
 
-    <p>I've been working on a side project and am adding animations to my views to give them more life. A common issue I have is that I need to animation of an array of items on to the screen, typically from a <code>@Binding</code>, such that each item starts its animation in sequence rather than in parallel after a short delay. In the end, I want to accomplish an effect like this:</p>
+    <p>I've been working on a side project to add animations in my views to give them more life. A common issue I have is that I need to animate an array of items on to the screen, typically from a <code>@Binding</code>, such that each item starts its animation in sequence rather than in parallel after a short delay. In the end, I want to accomplish an effect like this:</p>
 <figure class=""><img src="/images/blog/delayed-animations/animation.gif" alt="
   Delayed animation of views onAppear in a View
 "><figcaption>
   Delayed animation of views onAppear in a View
 </figcaption></figure>
-<p>Below is a simple extension to accomplish this and a sample View implementing the above animation. Feed free to use it!</p>
+<p>Below is a simple extension to accomplish this and a sample View implementing the above animation. Feel free to use it!</p>
 <h2>Extension for <code>Animation</code></h2>
 <p>The extension is:</p>
 <pre><code class="language-swift">import Foundation
@@ -72,8 +72,8 @@ extension Animation {
     }
 }
 </code></pre>
-<p>This extension adds a new method to <code>Animation</code> similar to <code>delay(duration:)</code>, but takes two new arguments: the item in the loop, and the container for that item. It also takes a factor, usually the same value as <code>duration</code>, and returns a new <code>delay</code> animation. It's worth noting that if the item is <em>not</em> in the second argument, it always returns 0 to be safe. The item also needs to conform to the <a href="https://developer.apple.com/documentation/swift/equatable"><code>Equatable</code> protocol</a> to support array lookups.</p>
-<p>The result is that you can use this new method in place of <code>delay</code> inside of a loop when you want to delay an animation by a factor of the index of the item in the array. It's a declarative way to perform animations and transitions for items in lists, loading animations, and lots of other uses.</p>
+<p>This extension adds a new method to <code>Animation</code> similar to <code>delay(duration:)</code>, but takes two new arguments: the item in the loop, and the container for that item. The delay argument is now a <code>factor</code> of the index of the item in the array, usually the same value as <code>duration</code>. As you can see it's a pretty simple piece of code, and it just returns a new <code>delay</code> animation. It's worth noting that if the item is <em>not</em> in the second argument, it always returns 0 to be safe. The item also needs to conform to the <a href="https://developer.apple.com/documentation/swift/equatable"><code>Equatable</code> protocol</a> to support array lookups.</p>
+<p>The result is that you can use this new method in place of <code>delay</code> inside of a loop when you want to delay an animation by a factor of the index of the item in the array. Simply copy this to a file in your project, and you can start using it immediately.</p>
 <h2>How to use <code>delayWithIndexOf</code></h2>
 <p>The following is an example that starts an animation when the view shows, animating in each of the subviews on a delay of 0.2 seconds after the previous one:</p>
 <pre><code class="language-swift">import SwiftUI
