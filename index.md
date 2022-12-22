@@ -6,15 +6,15 @@ date: 2022-01-01
 ---
 
 <header id="hero">
+  <p>  
+    <strong class="highlight">Hi, I'm Mike. 👋</strong>
+  </p>
   <p>
     <strong>
-      <span class="highlight">Hello!</span> I’m Mike. <span class="inline-portrait"></span> I like writing code, listening to music, and obsessing over the perfect espresso shot.
+      I like writing code, listening to music, and obsessing over the perfect espresso shot.
     </strong>
   </p>
-  <p class="faded">
-    I’m passionate about building engineering teams that make awesome things.
-  </p>
-  <p class="ultra-faded">
-    Thanks for stopping by.
+  <p>
+    Thanks for stopping by. <span class="inline-portrait"></span>
   </p>
 </header>

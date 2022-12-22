@@ -5,11 +5,10 @@ title: Explore
 date: 2022-01-02
 ---
 
-<header id="hero">
+<header>
+  <h1>Quick Links</h1>
   <p>
-    <strong class="faded">
-      This is my link feed.
-    </strong>
+    Bookmarks that I find interesting, updated throughout the day.
   </p>
 </header>
 

@@ -5,10 +5,9 @@ title: Projects
 date: 2022-01-04
 ---
 
-<header id="hero">
+<header>
+  <h1>Projects</h1>
   <p>
-    <strong class="faded">
-      These are some of my latest projects.
-    </strong>
+    Side projects and links to things that I've done.
   </p>
 </header>

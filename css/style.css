@@ -1,16 +1,23 @@
 :root {
-  --catawba: hsla(340, 27%, 36%, 1);
-  --marigold: hsla(40, 90%, 51%, 1);
-  --deep-champagne: hsla(35, 73%, 78%, 1);
-  --xanadu: hsla(83, 9%, 48%, 1);
-  --pink-lavender: hsla(293, 71%, 86%, 1);
+  --maximum-yellow-red: #f6bd60ff;
+  --linen: #f7ede2ff;
+  --baby-pink: #f5cac3ff;
+  --morning-blue: #84a59dff;
+  --light-coral: #f28482ff;
+  
 
-  --body-background: var(--catawba);
-  --text-highlight: var(--deep-champagne);
-  --text-body-color: #fff;
-  --text-faded-color: rgba(255, 255, 255, 0.6);
-  --text-ultra-faded-color: rgba(255, 255, 255, 0.3);
-  --text-body-link-color: var(--pink-lavender);
+  --catawba: hsla(340, 27%, 36%, 1);
+
+  --background-color: var(--linen);
+
+  --body-color: #444;
+  --highlight-color: var(--light-coral);
+  --caption-color: rgba(0.33, 0.33, 0.33, 0.2);
+  --caption2-color: #333;
+  --title-color: #333;
+  --subtitle-color: var(--light-coral);
+  --link-color: var(--morning-blue);
+  --link-highlight: var(--catawba);
 }
 
 body {
@@ -19,69 +26,46 @@ body {
   padding: 1.0rem;
   margin: 0;
 
-  background: var(--body-background);
-  color: var(--text-body-color);
+  background: var(--background-color);
+  color: var(--body-color);
 }
 
 a {
-  color: var(--text-body-link-color);
+  color: var(--link-color);
 }
 
-header nav {
-  display: flex;
-  align-items: center;
+h1 {
+  font-size: 3.0rem;
 }
 
 nav#site {
-  justify-content: flex-start;
-  gap: 3.0rem;
-
-  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 nav#site a {
   text-decoration: none;
   text-align: left;
 
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 
-  display: flex;
-  flex-direction: column;
-  align-items: left;
+  padding: 0.25rem;
+  margin-left: -0.25rem;
 }
 
-nav#site a::after {
-  content: '';
-
-  width: 1.0rem;
-  height: 0.20rem;
-  margin-top: 1.5rem;
-
-  border-radius: 0.25rem;
-
-  background: transparent;
-  opacity: 0.6;
-}
-
-nav#site a:hover::after {
-  background: var(--text-highlight);
-}
-
-nav#site a.current::after {
-  background: var(--text-body-link-color);
+nav#site a.current {
+  color: var(--link-highlight);
 }
 
 nav#social {
-  justify-content: flex-end;
-  gap: 0.5rem;
-
-  width: 50%
+  text-align: center;
 }
 
 nav#social a img {
   width: 32px;
   height: 32px;
-  opacity: 0.3;
+  opacity: 0.1;
 }
 
 nav#social a.mastodon img {
@@ -89,8 +73,8 @@ nav#social a.mastodon img {
   height: 28px;
 }
 
-#main-header, #main-section {
-  padding: 3.5rem 3.5rem 1rem 3.5rem;
+#main-header, #main-section, footer {
+  padding: 3.5rem 3.5rem 0rem 3.5rem;
 }
 
 #main-header {
@@ -99,7 +83,7 @@ nav#social a.mastodon img {
 }
 
 #main-section {
-  max-width: 85%;
+  max-width: 60%;
 }
 
 header#hero {
@@ -110,26 +94,35 @@ header#hero strong {
   font-weight: 600;
 }
 
+.portrait {
+  background: url('/images/me2.jpeg');
+  background-size: 100px 100px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .inline-portrait {
   background: url('/images/me2.jpeg');
-  background-size: 3.5rem 3.5rem;
-  width: 3.5rem;
-  height: 3.5rem;
+  background-size: 75px 75px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   display: inline-block;
   vertical-align: middle;
 }
 
 .highlight {
-  color: var(--text-highlight);
+  color: var(--highlight-color);
 }
 
 .faded {
-  color: var(--text-faded-color);
+  color: var(--caption-color);
 }
 
 .ultra-faded {
-  color: var(--text-ultra-faded-color);
+  color: var(--caption2-color);
 }
 
 footer {
@@ -172,15 +165,15 @@ footer {
 }
 
 .link-blog a .comment {
-  color: var(--text-body-color);
+  color: var(--body-color);
 }
 
 .link-blog a aside {
-  color: var(--text-faded-color);
+  color: var(--caption-color);
 }
 
 .link-blog h2 {
-  color: var(--text-highlight);
+  color: var(--subtitle-color);
 }
 
 /* Blog posts */
@@ -216,7 +209,7 @@ article p, article ul, article ol {
 .meta {
   font-size: 0.95rem;
   margin: 0 0 1.0rem 0;
-  color: var(--text-faded-color);
+  color: var(--caption-color);
 }
 
 figure {
@@ -271,9 +264,9 @@ figure.wide {
   }
 
   .inline-portrait {
-    background-size: 1.75rem 1.75rem;
-    width: 1.75rem;
-    height: 1.75rem;
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
   }
 
   nav#site {
@@ -284,6 +277,8 @@ figure.wide {
 
   nav#site a {
     font-size: 1.0rem;
+    padding: 0;
+    margin: 0;
     flex-direction: row;
   }
 
