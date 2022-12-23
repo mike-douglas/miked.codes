@@ -15,6 +15,9 @@ date: 2022-01-01
     </strong>
   </p>
   <p>
-    Thanks for stopping by. <span class="inline-portrait"></span>
+    Thanks for visiting.
+  </p>
+  <p>
+    <center><span class="inline-portrait"></span></center>
   </p>
 </header>
