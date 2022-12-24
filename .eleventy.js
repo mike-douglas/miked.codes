@@ -1,3 +1,5 @@
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('images')
   eleventyConfig.addPassthroughCopy('css')
@@ -29,5 +31,19 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addPairedShortcode('gallery', (content) => {
     return (`<div class="gallery"><div class="gallery-row">${content}</div></div>`)
+  })
+
+  eleventyConfig.addPlugin(pluginRss)
+
+  eleventyConfig.addLiquidFilter("dateToRfc822", pluginRss.dateToRfc822)
+  
+  eleventyConfig.addFilter("getNewestCollectionItemDate", (collection) => {
+    let sorted = [...collection].sort((a, b) => a.data.date - b.data.date)
+
+    return sorted[0].data.date
+  })
+
+  eleventyConfig.addFilter("elementToAbsoluteUrl", (postContent, root) => {
+    return postContent.replace(/(src=\")([^\"]+)"/g, `src="${root}$2"`)
   })
 }
