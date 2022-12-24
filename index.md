@@ -1,6 +1,6 @@
 ---
 layout: page.njk
-title: Mike D.
+title: Hello, I'm Mike
 excerpt: Mike is an engineering manager currently working at Dropbox.
 navTitle: Home
 feature: /images/large-card-default.jpeg
