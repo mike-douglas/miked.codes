@@ -1,7 +1,7 @@
 ---
 title: 
 excerpt: 
-feature: /images/large-card-default.jpeg
+socialImage: /images/large-card-default.jpeg
 ogType: website
 ---
 <!DOCTYPE html>
@@ -20,6 +20,10 @@ ogType: website
   <meta property="twitter:description" content="{{ excerpt }}" />
   {% if feature %}
   <meta property="twitter:image" content="https://miked.codes{{ feature }}" />
+  {% else %}
+  {% if socialImage %}
+  <meta property="twitter:image" content="https://miked.codes{{ socialImage }}" />
+  {% endif %}
   {% endif %}
 
   <meta property="og:type" content="{{ ogType }}" />
@@ -28,6 +32,10 @@ ogType: website
   <meta property="og:url" content="https://miked.codes/" />
   {% if feature %}
   <meta property="og:image" content="https://miked.codes{{ feature }}" />
+  {% else %}
+  {% if socialImage %}
+  <meta property="og:image" content="https://miked.codes{{ socialImage }}" />
+  {% endif %}
   {% endif %}
 
   <link rel="stylesheet" href="/css/style.css">
