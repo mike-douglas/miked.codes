@@ -1,15 +1,7 @@
 ---
-layout: page.njk
+layout: main-level-page.njk
 tags: page
-title: Archive
 ---
-
-<header>
-  <h1>Blog Archive</h1>
-  <p>
-    Here's some stuff that I've written.
-  </p>
-</header>
 
 {%- for post in collections.post | reverse -%}
 <article class="readable-width">

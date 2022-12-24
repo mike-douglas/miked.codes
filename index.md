@@ -1,6 +1,9 @@
 ---
 layout: page.njk
-title: Home
+title: Mike D.
+excerpt: Mike is an engineering manager currently working at Dropbox.
+navTitle: Home
+feature: /images/large-card-default.jpeg
 tags: page
 date: 2022-01-01
 ---
@@ -16,8 +19,5 @@ date: 2022-01-01
   </p>
   <p>
     Thanks for visiting.
-  </p>
-  <p>
-    <center><span class="inline-portrait"></span></center>
   </p>
 </header>

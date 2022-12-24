@@ -8,7 +8,7 @@ tags:
   - Coding
   - SwiftUI
   - Swift
-excerpt: A quick and easy extension to help animating views in SwiftUI.
+excerpt: A quick and easy extension to help aninmate views in sequence in SwiftUI projects.
 ---
 
 I've been working on a side project to add animations in my views to give them more life. A common issue I have is that I need to animate an array of items on to the screen, typically from a `@Binding`, such that each item starts its animation in sequence rather than in parallel after a short delay. In the end, I want to accomplish an effect like this:
