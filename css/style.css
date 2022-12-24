@@ -230,6 +230,7 @@ h1 a, h2 a, h3 a {
 
 article h1 {
   font-size: 3.0rem;
+  line-height: normal;
 }
 
 #main-section p, section, article p, article ul, article ol {
