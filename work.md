@@ -2,7 +2,7 @@
 layout: main-level-page.njk
 title: Work
 navTitle: Work
-excerpt: I am an engineering leader that loves to build teams that make awesome things.
+excerpt: I am an engineering leader that loves to build teams and make awesome things.
 tags: page
 date: 2022-01-05
 ---
