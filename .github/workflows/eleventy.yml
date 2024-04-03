@@ -18,15 +18,7 @@ jobs:
         name: Setup Node
         with:
           node-version: '18.5'
-
-      - name: Build apps
-        run: |
-          cd app
-          npm install
-          npm run build
-          mkdir -p ../js
-          cp dist/assets/*.js ../js/app.js
-      
+     
       - name: Build site
         run: |
           npm install --dev
