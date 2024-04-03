@@ -22,7 +22,7 @@ jobs:
       - name: Build site
         run: |
           npm install --dev
-          npx npx @11ty/eleventy
+          yes | npx npx @11ty/eleventy
           cp CNAME _site/CNAME
 
       - uses: peaceiris/actions-gh-pages@v3
